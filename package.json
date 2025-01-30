@@ -2,6 +2,10 @@
   "dependencies": {
     "dotenv": "^16.4.7",
     "inquirer": "^8.2.4",
-    "pg": "^8.13.1"
+    "pg": "^8.13.1",
+    "sequelize": "^6.37.5"
+  },
+  "devDependencies": {
+    "@types/sequelize": "^4.28.20"
   }
 }
