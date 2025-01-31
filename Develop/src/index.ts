@@ -4,7 +4,7 @@ import path from 'path';
 const questions = [
     {
         type: 'input',
-        name: 'username',
+        name: 'View',
         message: 'What is your name?',
     },
     {
