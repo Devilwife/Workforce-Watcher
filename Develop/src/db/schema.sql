@@ -5,32 +5,32 @@ CREATE DATABASE employees_db;
 
 SELECT current_database();
 
-CREATE TABLE department (
+CREATE TABLE Departments (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(100) UNIQUE NOT NULL
+    name VARCHAR(30) UNIQUE NOT NULL,
 );
 
-CREATE TABLE roles (
+CREATE TABLE Roles (
     id SERIAL PRIMARY KEY,
-    title VARCHAR(255),
+    title VARCHAR(30) UNIQUE NOT NULL,
     salary DECIMAL NOT NULL,
     department_id INTEGER NOT NULL,
     FOREIGN KEY (department_id)
-    REFERENCES department(id)
+    REFERENCES Department(id)
 );
 
 
 
-CREATE TABLE employees (
+CREATE TABLE Employee (
     id SERIAL PRIMARY KEY,
-    first_name VARCHAR(100) NOT NULL,
-    last_name VARCHAR(100) NOT NULL,
+    first_name VARCHAR(30) NOT NULL,
+    last_name VARCHAR(30) NOT NULL,
     role_id INTEGER NOT NULL,
     manager_id INTEGER,
     FOREIGN KEY (role_id)
-    REFERENCES roles(id),
+    REFERENCES Roles(id),
     FOREIGN KEY (manager_id)
-    REFERENCES employees(id)
+    REFERENCES Employees(id)
     ON DELETE SET NULL
 );
 
