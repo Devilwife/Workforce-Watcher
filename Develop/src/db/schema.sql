@@ -5,7 +5,7 @@ CREATE DATABASE employees_db;
 
 SELECT current_database();
 
-CREATE TABLE departments (
+CREATE TABLE department (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) UNIQUE NOT NULL
 );

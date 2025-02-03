@@ -4,7 +4,7 @@ DECLARE
 
 BEGIN
 
-INSERT INTO departments (id, name) 
+INSERT INTO department (id, name) 
 VALUES (1, 'Sales'),
        (2, 'Legal'),
        (3, 'Finance'),
