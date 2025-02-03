@@ -78,7 +78,7 @@ async function addEmployee() {
     }
 }
 
-async function viewDepartments() {
+async function viewDepartment() {
     try {
         const result = await pool.query('SELECT * FROM department');
         console.table(result.rows);
@@ -138,21 +138,21 @@ async function updateEmployeeRole() {
             type: 'list',
             name: 'action',
             message: 'What would you like to do?',
-            choices: ['Add a department', 'Add a role', 'Add an employee', 'View departments', 'View roles', 'View employees', 'Update employee role','Quit',],
+            choices: ['Add department', 'Add role', 'Add employee', 'View department', 'View roles', 'View employees', 'Update employee role','Quit',],
         },
     ]);
     switch (action) {
-        case 'Add a department':
+        case 'Add department':
             await addDepartment();
             break;
-        case 'Add a role':
+        case 'Add role':
             await addRole();
             break;
-        case 'Add an employee':
+        case 'Add employee':
             await addEmployee();
             break;
-        case 'View departments':
-            await viewDepartments();
+        case 'View department':
+            await viewDepartment();
             break;
         case 'View roles':
             await viewRoles();
