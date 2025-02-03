@@ -16,7 +16,7 @@ async function addDepartment() {
     catch (error) {
         console.error('Error adding department:', error);
     }
-    // init();
+    init();
 }
 async function addRole() {
     const { roleName } = await inquirer.prompt([
@@ -87,7 +87,7 @@ async function viewDepartment() {
 }
 async function viewRoles() {
     try {
-        const result = await pool.query('SELECT * FROM role');
+        const result = await pool.query('SELECT * FROM roles');
         console.table(result.rows);
     }
     catch (error) {
@@ -96,7 +96,7 @@ async function viewRoles() {
 }
 async function viewEmployees() {
     try {
-        const result = await pool.query('SELECT * FROM employee');
+        const result = await pool.query('SELECT * FROM employees');
         console.table(result.rows);
     }
     catch (error) {
@@ -135,17 +135,17 @@ async function mainMenu() {
             type: 'list',
             name: 'action',
             message: 'What would you like to do?',
-            choices: ['Add a department', 'Add a role', 'Add an employee', 'View department', 'View roles', 'View employees', 'Update employee role', 'Quit',],
+            choices: ['Add department', 'Add role', 'Add employee', 'View department', 'View roles', 'View employees', 'Update employee role', 'Quit',],
         },
     ]);
     switch (action) {
-        case 'Add a department':
+        case 'Add department':
             await addDepartment();
             break;
-        case 'Add a role':
+        case 'Add role':
             await addRole();
             break;
-        case 'Add an employee':
+        case 'Add employee':
             await addEmployee();
             break;
         case 'View department':
@@ -169,3 +169,7 @@ async function mainMenu() {
     await connectToDb();
     await mainMenu();
 })();
+async function init() {
+    console.log('Returning to main menu...');
+    await mainMenu();
+}

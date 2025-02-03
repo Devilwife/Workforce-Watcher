@@ -17,7 +17,8 @@ async function addDepartment() {
         console.error('Error adding department:', error);
     }
     
-    // init();
+    init ();
+    
 }
 
 async function addRole() {
@@ -78,6 +79,7 @@ async function addEmployee() {
     }
 }
 
+
 async function viewDepartment() {
     try {
         const result = await pool.query('SELECT * FROM department');
@@ -89,7 +91,7 @@ async function viewDepartment() {
 
 async function viewRoles() {
     try {
-        const result = await pool.query('SELECT * FROM role');
+        const result = await pool.query('SELECT * FROM roles');
         console.table(result.rows);
     } catch (error) {
         console.error('Error viewing roles:', error);
@@ -98,7 +100,7 @@ async function viewRoles() {
 
 async function viewEmployees() {
     try {
-        const result = await pool.query('SELECT * FROM employee');
+        const result = await pool.query('SELECT * FROM employees');
         console.table(result.rows);
     } catch (error) {
         console.error('Error viewing employees:', error);
@@ -174,3 +176,8 @@ async function updateEmployeeRole() {
     await connectToDb();
     await mainMenu();
 })();
+async function init() {
+    console.log('Returning to main menu...');
+    await mainMenu();
+}
+
