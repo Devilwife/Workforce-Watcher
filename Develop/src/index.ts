@@ -170,29 +170,29 @@ async function addDepartment() {
             type: 'list',
             name: 'action',
             message: 'What would you like to do?',
-            choices: ['View employees', 'Add employee', 'Update employee role', 'Add role', 'View roles',  'Add department', 'View departments','Quit',],
+            choices: ['View Employees', 'Add Employee', 'Update Employee Role', 'View Roles', 'Add Role', 'View Departments', 'Add Department', 'Quit',],
         },
     ]);
     switch (action) {
-        case 'View employees':
+        case 'View Employees':
             await viewEmployees();
             break;
-        case 'Add employee':
+        case 'Add Employee':
             await addEmployee();
             break;
-        case 'Update employee role':
+        case 'Update Employee Role':
             await updateEmployeeRole();
             break;
-        case 'View roles':
+        case 'View Roles':
             await viewRoles();
             break;
-        case 'Add role':
+        case 'Add Role':
             await addRole();
             break;
-        case 'View departments':
+        case 'View Departments':
             await viewDepartments();
             break;
-        case 'Add department':
+        case 'Add Department':
             await addDepartment();
             break;
         case 'Quit':

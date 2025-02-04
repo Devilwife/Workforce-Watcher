@@ -21,7 +21,7 @@ CREATE TABLE Roles (
 
 
 
-CREATE TABLE Employee (
+CREATE TABLE Employees (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
