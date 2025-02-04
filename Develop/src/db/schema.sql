@@ -7,7 +7,7 @@ SELECT current_database();
 
 CREATE TABLE Departments (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(30) UNIQUE NOT NULL,
+    name VARCHAR(30) UNIQUE NOT NULL
 );
 
 CREATE TABLE Roles (
@@ -16,7 +16,7 @@ CREATE TABLE Roles (
     salary DECIMAL NOT NULL,
     department_id INTEGER NOT NULL,
     FOREIGN KEY (department_id)
-    REFERENCES Department(id)
+    REFERENCES Departments(id)
 );
 
 
