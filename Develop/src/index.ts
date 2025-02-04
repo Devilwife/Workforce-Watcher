@@ -13,10 +13,10 @@ async function viewAllEmployees() {
                 r.salary,
                 e.manager_id,
                 CONCAT(m.first_name, ' ', m.last_name) AS manager_name
-            FROM employee e
-            JOIN role r ON e.role_id = r.id
-            JOIN department d ON r.department_id = d.id
-            LEFT JOIN employee m ON e.manager_id = m.id
+            FROM employees e
+            JOIN roles r ON e.role_id = r.id
+            JOIN departments d ON r.department_id = d.id
+            LEFT JOIN employees m ON e.manager_id = m.id
             `);
         console.table(result.rows);
     } catch (error) {
@@ -137,7 +137,7 @@ async function addDepartment() {
             type: 'list',
             name: 'action',
             message: 'What would you like to do?',
-            choices: ['View All Employees', 'Add Employee', 'Update Employee Role', 'View ALL Roles', 'Add Role', 'View All Departments', 'Add Department', 'Quit',],
+            choices: ['View All Employees', 'Add Employee', 'Update Employee Role', 'View All Roles', 'Add Role', 'View All Departments', 'Add Department', 'Quit',],
         },
     ]);
     switch (action) {
