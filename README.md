@@ -6,7 +6,11 @@ The Employee Tracker is a command-line application that helps businesses manage 
 
 Features
 
-View all departments, roles, and employees tables
+View all departments, roles, and employees table
+
+Add new departments, roles, and employees
+
+Update employee roles
 
 Technologies Used
 Inquirer, pg, dotenv, 
@@ -36,7 +40,9 @@ DB_HOST='localhost'
 DB_PORT=3306 # or 5432 for PostgreSQL
 
 Create and seed the database:
-
+psql -U postgres
+\i schema.sql;
+\i seed.sql;
 node db/setup.js
 
 Usage
