@@ -1,12 +1,26 @@
 import inquirer from 'inquirer';
 import {pool, connectToDb} from './db/connection.js';
 
-async function viewEmployees() {
+async function viewAllEmployees() {
     try {
-        const result = await pool.query('SELECT * FROM employees');
+        const result = await pool.query(`
+            SELECT
+                e.id AS employee_id,
+                e.first_name,
+                e.last_name,
+                r.title AS role,
+                d.name AS department,
+                r.salary,
+                e.manager_id,
+                CONCAT(m.first_name, ' ', m.last_name) AS manager_name
+            FROM employee e
+            JOIN role r ON e.role_id = r.id
+            JOIN department d ON r.department_id = d.id
+            LEFT JOIN employee m ON e.manager_id = m.id
+            `);
         console.table(result.rows);
     } catch (error) {
-        console.error('Error viewing employees:', error);
+        console.error('Error fetching employees. Try again.', error);
     }
 }
 
@@ -45,7 +59,7 @@ export async function updateEmployeeRole() {
     }
   }
 
-async function viewRoles() {
+async function viewAllRoles() {
     try {
         const result = await pool.query('SELECT * FROM roles');
         console.table(result.rows);
@@ -76,7 +90,7 @@ export async function addRole() {
     }
   }
 
-async function viewDepartments() {
+async function viewAllDepartments() {
     try {
         const result = await pool.query('SELECT * FROM departments');
         console.table(result.rows);
@@ -123,12 +137,12 @@ async function addDepartment() {
             type: 'list',
             name: 'action',
             message: 'What would you like to do?',
-            choices: ['View Employees', 'Add Employee', 'Update Employee Role', 'View Roles', 'Add Role', 'View Departments', 'Add Department', 'Quit',],
+            choices: ['View All Employees', 'Add Employee', 'Update Employee Role', 'View ALL Roles', 'Add Role', 'View All Departments', 'Add Department', 'Quit',],
         },
     ]);
     switch (action) {
-        case 'View Employees':
-            await viewEmployees();
+        case 'View All Employees':
+            await viewAllEmployees();
             break;
         case 'Add Employee':
             await addEmployee();
@@ -136,14 +150,14 @@ async function addDepartment() {
         case 'Update Employee Role':
             await updateEmployeeRole();
             break;
-        case 'View Roles':
-            await viewRoles();
+        case 'View All Roles':
+            await viewAllRoles();
             break;
         case 'Add Role':
             await addRole();
             break;
-        case 'View Departments':
-            await viewDepartments();
+        case 'View All Departments':
+            await viewAllDepartments();
             break;
         case 'Add Department':
             await addDepartment();
