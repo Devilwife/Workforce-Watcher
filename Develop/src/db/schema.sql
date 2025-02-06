@@ -15,9 +15,7 @@ CREATE TABLE Roles (
     title VARCHAR(30) UNIQUE NOT NULL,
     salary DECIMAL NOT NULL,
     department_id INTEGER NOT NULL,
-    FOREIGN KEY (department_id)
-    REFERENCES Departments(id)
-    ON DELETE CASCADE
+    FOREIGN KEY (department_id) REFERENCES Departments(id) ON DELETE CASCADE
 );
 
 
@@ -27,11 +25,8 @@ CREATE TABLE Employees (
     last_name VARCHAR(30) NOT NULL,
     role_id INTEGER NOT NULL,
     manager_id INTEGER,
-    FOREIGN KEY (role_id)
-    REFERENCES Roles(id),
-    FOREIGN KEY (manager_id)
-    REFERENCES Employees(id),
-    ON DELETE SET NULL
+    FOREIGN KEY (role_id) REFERENCES Roles(id) ON DELETE CASCADE,
+    FOREIGN KEY (manager_id) REFERENCES Employees(id) ON DELETE SET NULL
 );
 
 

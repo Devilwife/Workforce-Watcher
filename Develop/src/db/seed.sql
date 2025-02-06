@@ -18,7 +18,7 @@ VALUES
        (303, 'Analyst', 70000, 3),
        (405, 'Lawyer', 60000, 2);
 
-INSERT INTO Employees (id, first_name, last_name, role_id, manager_id,)
+INSERT INTO Employees (id, first_name, last_name, role_id, manager_id)
 VALUES 
        (1001, 'John', 'Doe', 102, NULL),
        (2002, 'Jane', 'Smith', 205, 1001),
